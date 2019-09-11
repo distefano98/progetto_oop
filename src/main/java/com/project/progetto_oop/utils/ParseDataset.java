@@ -23,8 +23,9 @@ public class ParseDataset {
             String line;
             br.readLine();
             while ((line = br.readLine()) != null) {
-                String[] data = line.split(COMMA_DELIMITER);
-                int i = Integer.parseInt(data[0].replace('"',' '));
+                String[] data = line.split(COMMA_DELIMITER); //problem id 52!!!
+                String s = data[0].replace("\"","");
+                int i = Integer.parseInt(s);
                 double d6 = Double.parseDouble(data[6]);
                 double d7 = Double.parseDouble(data[7]);
                 double d8 = Double.parseDouble(data[8]);
