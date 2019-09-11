@@ -1,16 +1,16 @@
 package com.project.progetto_oop.model;
 
 public class Survey {
-    int id;
-    String countryEUStatus;
-    String countryCode;
-    String questionCode;
-    String subset;
-    String answer;
-    double answers;
-    double subsetAnswers;
-    double percentage;
-    double sampleAnswers;
+    private int id;
+    private String countryEUStatus;
+    private String countryCode;
+    private String questionCode;
+    private String subset;
+    private String answer;
+    private double answers;
+    private double subsetAnswers;
+    private double percentage;
+    private double sampleAnswers;
 
     public Survey(int id, String countryEUStatus, String countryCode, String questionCode, String subset, String answer, double answers, double subsetAnswers, double percentage, double sampleAnswers) {
         this.id = id;
