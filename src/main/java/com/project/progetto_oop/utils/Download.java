@@ -16,6 +16,12 @@ import java.nio.file.Paths;
 
 public class Download {
 
+    /**
+     * Metodo per scaricare il dataset dal link fornito nelle specifiche
+     * @param name nome da dare al file in locale una volta scaricato
+     * @throws IOException dovuta allo stream della connessione
+     * @throws JSONException dovuta alla conversione in JSON
+     */
     public void downloadCsv(String name) throws IOException, JSONException {
 
         URLConnection openConnection = new URL("http://data.europa.eu/euodp/data/api/3/action/package_show?id=esener-2").openConnection();
@@ -45,6 +51,13 @@ public class Download {
             }
         }
     }
+
+    /**
+     *
+     * @param url url per il download del csv
+     * @param name nome da assegnare al file in locale
+     * @throws IOException dovuto alla connessione
+     */
     private void download(String url, String name) throws IOException {
         try (InputStream in = URI.create(url).toURL().openStream()) {
             Files.copy(in, Paths.get(name));
