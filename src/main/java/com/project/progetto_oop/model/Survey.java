@@ -10,9 +10,9 @@ public class Survey {
     private double answers;
     private double subsetAnswers;
     private double percentage;
-    private double sampleAnswers;
+    private String sampleAnswers;
 
-    public Survey(int id, String countryEUStatus, String countryCode, String questionCode, String subset, String answer, double answers, double subsetAnswers, double percentage, double sampleAnswers) {
+    public Survey(int id, String countryEUStatus, String countryCode, String questionCode, String subset, String answer, double answers, double subsetAnswers, double percentage, String sampleAnswers) {
         this.id = id;
         this.countryEUStatus = countryEUStatus;
         this.countryCode = countryCode;
@@ -97,11 +97,11 @@ public class Survey {
         this.percentage = percentage;
     }
 
-    public double getSampleAnswers() {
+    public String getSampleAnswers() {
         return sampleAnswers;
     }
 
-    public void setSampleAnswers(double sampleAnswers) {
+    public void setSampleAnswers(String sampleAnswers) {
         this.sampleAnswers = sampleAnswers;
     }
 }
