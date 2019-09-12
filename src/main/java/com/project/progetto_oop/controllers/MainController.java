@@ -13,13 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MainController {
 
-
-        @RequestMapping(value = "/metadata", method = RequestMethod.GET, produces="application/json")
-        String showMetadata() throws JsonProcessingException {
-            ObjectMapper mapper = new ObjectMapper();
-            JsonSchemaGenerator jsonSchemaGenerator = new JsonSchemaGenerator(mapper);
-            JsonSchema jsonSchema = jsonSchemaGenerator.generateSchema(Survey.class);
-            return mapper.writeValueAsString(jsonSchema);
-        }
+    /**
+     * alla richiesta /metadata mostra i metadati creati nella classe Survey
+     * @return il mapper che rappresenta i metadati
+     * @throws JsonProcessingException dovuta alla costruzione del jsonSchemaGenerator
+     */
+    @RequestMapping(value = "/metadata", method = RequestMethod.GET, produces="application/json")
+    String showMetadata() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonSchemaGenerator jsonSchemaGenerator = new JsonSchemaGenerator(mapper);
+        JsonSchema jsonSchema = jsonSchemaGenerator.generateSchema(Survey.class);
+        return mapper.writeValueAsString(jsonSchema);
+    }
 
 }
