@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 public class ParseDataset {
 
-    private final String COMMA_DELIMITER = ",";
+    private final String COMMA_DELIMITER = "\",";
+    private final String COMMA_DELIMITER2 = ",";
 
     /**
      * Metodo per parsare il csv in classi Survey, collezionati come Arraylist
@@ -25,11 +26,12 @@ public class ParseDataset {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(COMMA_DELIMITER); //problem id 52!!!
                 String s = data[0].replace("\"","");
+                String[] data2 = data[6].split(COMMA_DELIMITER2);
                 int i = Integer.parseInt(s);
-                double d6 = Double.parseDouble(data[6]);
-                double d7 = Double.parseDouble(data[7]);
-                double d8 = Double.parseDouble(data[8]);
-                arrayList.add(new Survey(i,data[1],data[2],data[3],data[4],data[5],d6,d7,d8,data[9]));
+                double d6 = Double.parseDouble(data2[0]);
+                double d7 = Double.parseDouble(data2[1]);
+                double d8 = Double.parseDouble(data2[2]);
+                arrayList.add(new Survey(i,data[1],data[2],data[3],data[4],data[5],d6,d7,d8,data2[3]));
             }
         } finally {
             return arrayList;

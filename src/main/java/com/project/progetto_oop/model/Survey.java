@@ -1,7 +1,14 @@
 package com.project.progetto_oop.model;
 
-public class Survey {
+import com.fasterxml.jackson.annotation.JsonPropertyDescription;
+
+import java.io.Serializable;
+
+public class Survey implements Serializable {
+
+    @JsonPropertyDescription("id sondaggio")
     private int id;
+    @JsonPropertyDescription("paese ecc..")
     private String countryEUStatus;
     private String countryCode;
     private String questionCode;
