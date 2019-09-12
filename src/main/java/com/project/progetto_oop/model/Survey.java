@@ -10,6 +10,7 @@ public class Survey implements Serializable {
     private int id;
     @JsonPropertyDescription("paese ecc..")
     private String countryEUStatus;
+    @JsonPropertyDescription("codice paese")
     private String countryCode;
     private String questionCode;
     private String subset;

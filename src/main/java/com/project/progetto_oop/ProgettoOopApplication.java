@@ -14,6 +14,8 @@ import java.util.ArrayList;
 @SpringBootApplication
 public class ProgettoOopApplication {
 
+	public static ArrayList<Survey> startArrayList;
+
 	public static void main(String[] args){
 		File file = new File("dataset.csv");
         if(!file.exists()){
@@ -25,7 +27,7 @@ public class ProgettoOopApplication {
 			}
 		}
 		ParseDataset parseDataset = new ParseDataset();
-        ArrayList<Survey> surveyArrayList = parseDataset.parserCsv(file.getName());
+        startArrayList = parseDataset.parserCsv(file.getName());
         SpringApplication.run(ProgettoOopApplication.class, args);
 	}
 }
