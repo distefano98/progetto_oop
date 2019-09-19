@@ -8,11 +8,12 @@ import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
 import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
 import com.project.progetto_oop.ProgettoOopApplication;
 import com.project.progetto_oop.model.Survey;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.project.progetto_oop.utils.StatisticNumber;
+import com.project.progetto_oop.utils.StatisticString;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @RestController
 public class MainController {
@@ -35,10 +36,27 @@ public class MainController {
         return ProgettoOopApplication.startArrayList;
     }
 
-    @RequestMapping(value = "/stats", method = RequestMethod.GET, produces = "application/json")
-    ArrayList<Survey> showStats(){
+    @RequestMapping(value = "/stats/number", method = RequestMethod.GET, produces = "application/json")
+    HashMap<String, StatisticNumber> showStatsNumber(){
+        HashMap<String, StatisticNumber> hashMap = new HashMap<>();
+        hashMap.put("answers", new StatisticNumber(ProgettoOopApplication.startArrayList,"answers"));
+        hashMap.put("subsetAnswers", new StatisticNumber(ProgettoOopApplication.startArrayList,"subsetAnswers"));
+        hashMap.put("percentage", new StatisticNumber(ProgettoOopApplication.startArrayList,"percentage"));
+        return hashMap;
+    }
 
-        return ProgettoOopApplication.startArrayList;
+    @RequestMapping(value = "/stats/string", method = RequestMethod.GET, produces = "application/json")
+    HashMap<String, StatisticString> showStatsString(
+            @RequestParam String field,
+            @RequestParam String value
+    ){
+        HashMap<String, StatisticString> hashMap = new HashMap<>();
+        StatisticString statisticString = new StatisticString(ProgettoOopApplication.startArrayList, value, field);
+        //if (statisticString.getUnique() == 0){
+            //Throwable new ResponseStatus()
+
+        hashMap.put(field,statisticString);
+        return hashMap;
     }
 
 }

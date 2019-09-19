@@ -19,7 +19,7 @@ public class StatisticString {
         for ( Survey s : surveys){
             Method m = null;
             try {
-                m = s.getClass().getMethod("get"+field.substring(0, 1).toUpperCase()+field.substring(1),null);
+                m = Survey.class.getMethod("get"+field.substring(0, 1).toUpperCase()+field.substring(1),null);
                 Object string = m.invoke(s);
                 if((value.equals((String) string))){
                     unique++;

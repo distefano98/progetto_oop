@@ -15,7 +15,7 @@ public class StatisticNumber {
     private double sum;
     private int count;
 
-    public StatisticNumber(ArrayList<Survey> surveys, double value, String field) {
+    public StatisticNumber(ArrayList<Survey> surveys, String field) {
         this.count = surveys.size();
         double[] values = new double[count];
         for ( int i = 0; i < count ; i++){
@@ -57,7 +57,7 @@ public class StatisticNumber {
 
     private void setMin(double[] values) {
         double min = values[0];
-        for ( int i = 0; i < values.length ; i++){
+        for ( int i = 1; i < values.length ; i++){
             if(values[i] < min){
                 min = values[i];
             }
@@ -75,12 +75,12 @@ public class StatisticNumber {
 
     private void setMax(double[] values) {
         double max = values[0];
-        for ( int i = 0; i < values.length ; i++){
+        for ( int i = 1; i < values.length ; i++){
             if(values[i] > max){
                 max = values[i];
             }
         }
-        setMin(max);
+        setMax(max);
     }
 
     public double getDev() {
