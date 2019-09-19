@@ -35,4 +35,10 @@ public class MainController {
         return ProgettoOopApplication.startArrayList;
     }
 
+    @RequestMapping(value = "/stats", method = RequestMethod.GET, produces = "application/json")
+    ArrayList<Survey> showStats(){
+
+        return ProgettoOopApplication.startArrayList;
+    }
+
 }
