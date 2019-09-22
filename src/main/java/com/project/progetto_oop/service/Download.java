@@ -1,4 +1,4 @@
-package com.project.progetto_oop.utils;
+package com.project.progetto_oop.service;
 
 import org.json.JSONArray;
 import org.json.JSONException;
