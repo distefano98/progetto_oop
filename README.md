@@ -31,12 +31,35 @@ Attraverso SpringBoot l'applicazione crea un server locale all'indirizzo http://
   - media 
   - conteggio degli elementi <br/>
   
-  ## Inserimento di filtri nella richiesta GET
+ **Operatori Logici**
+
+| Operatore | Descrizione |
+| --- | --- |
+| $or | Operatore logico "or" |
+| $and | Operatore logico "and" |
+| $in  |   |
+| $nin |  |
+| $not | operatore logico "not" |
+
+**Operatori Condizionali**
+
+| Operatore | Descrizione |
+| --- | --- |
+| $bt | >=value <= |
+| $eq | == |
+| $gt | > |
+| $gte | >= |
+| $lt | < |
+| $lte | <= |
+
   
-  ....
+## Inserimento di filtri nella richiesta POST
+|**body** | **descrizione**|
+|
   
   
-  ## Schema delle richieste
+  
+## Schema delle richieste
 | **Link** | **Descrizione** |
 | --- | --- |
 | http://localhost:8080/metadata | Restituzione metadati |
@@ -44,8 +67,6 @@ Attraverso SpringBoot l'applicazione crea un server locale all'indirizzo http://
 | http://localhost:8080/stats/number | Restituzione statistiche di tipo numerico |
 | http://localhost:8080/stats/string?field=NOME_CAMPO&value=VALORE | Restituzione statistiche sulle stringhe <br/> specificando il nome del campo e il dato che si vuole studiare |
 
-
-(...filtri)
 
 
 
