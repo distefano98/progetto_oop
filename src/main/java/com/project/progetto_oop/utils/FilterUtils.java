@@ -19,15 +19,9 @@ public class FilterUtils<T> {
                 tmp = m.invoke(item);
                 if(FilterUtils.check(tmp, operator, value))
                     collection.add(item);
-                } catch (IllegalAccessException e) {
+                } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException e) {
                     e.printStackTrace();
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            }
+                }
         }
         return collection;
     }

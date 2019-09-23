@@ -34,10 +34,21 @@ public class MainController {
         return mapper.writeValueAsString(jsonSchema);
     }
 
+    /**
+     * alla richiesta / visualizza tutti gli elementi del dataset come oggetti Survey
+     * @return L'Arraylist che contiene gli oggetti Survey
+     */
+
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
     ArrayList<Survey> showData(){
         return ProgettoOopApplication.startArrayList;
     }
+
+    /**
+     * alla richiesta /stats/numeber elabora le statistiche sui valori di tipo numerici
+     * @param field parametro della GET request per restituire statistiche su un singolo campo
+     * @return L'arraylist delle statistiche su quel campo
+     */
 
     @RequestMapping(value = "/stats/number", method = RequestMethod.GET, produces = "application/json")
     HashMap<String, StatisticNumber> showStatsNumber(
@@ -50,6 +61,13 @@ public class MainController {
         }
         return hashMap;
     }
+
+    /**
+     * alla richiesta /stats/string elabora le statistiche sui valori di tipo alfanumerici
+     * @param field parametro della GET request per restituire statistiche su un singolo campo
+     * @param value parametro della GET request per restituire statistiche su un singolo valore alfanumerico
+     * @return L'arraylist delle statistiche su quel campo
+     */
 
     @RequestMapping(value = "/stats/string", method = RequestMethod.GET, produces = "application/json")
     HashMap<String, StatisticString> showStatsString(
@@ -65,6 +83,11 @@ public class MainController {
         return hashMap;
     }
 
+    /**
+     * alla richiesta /filter elabora l'arraylist iniziale filtrando tramite i parametri inseriti nel request Body
+     * @param filter Json (preso come string) che rappresenta le istruzioni per filtrare
+     * @return arralist di Survey filtrato tramite le istruzioni del Json
+     */
 
     @RequestMapping(value = "/filter", method = RequestMethod.POST, produces = "application/json")
     public ArrayList<Survey> showFilteredData(
