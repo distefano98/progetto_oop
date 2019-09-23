@@ -68,7 +68,7 @@ Attraverso SpringBoot l'applicazione crea un server locale all'indirizzo http://
 L'inserimento di filtri viene effettuato mediante una richiesta di tipo POST.
 E' possibile inserire filtri su massimo due campi del dataset (legati da un operatore logico) indicando su di essi l'operatore condizionale e il valore/i di filtraggio ; è possibile concatenare operatori logici in modo da ottenere fino ad un massimo di due livelli di filtraggio.
 
-Gli esempi di seguito riportati sono stati realizzati attraverso l'API Test Environment Postman 
+Gli esempi di seguito riportati sono stati realizzati attraverso l'API Test Environment Postman </br>
 ***localhost:8080/filter***
 
 
