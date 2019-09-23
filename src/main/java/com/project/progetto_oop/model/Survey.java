@@ -8,16 +8,23 @@ public class Survey implements Serializable {
 
     @JsonPropertyDescription("id sondaggio")
     private int id;
-    @JsonPropertyDescription("paese ecc..")
+    @JsonPropertyDescription("stato")
     private String countryEUStatus;
     @JsonPropertyDescription("codice paese")
     private String countryCode;
+    @JsonPropertyDescription("codice identificativo della domanda")
     private String questionCode;
+    @JsonPropertyDescription("grandezza azienda")
     private String subset;
+    @JsonPropertyDescription("risposta alla domanda")
     private String answer;
+    @JsonPropertyDescription("risposte")
     private double answers;
+    @JsonPropertyDescription("subsetAnswers")
     private double subsetAnswers;
+    @JsonPropertyDescription("percentuale")
     private double percentage;
+    @JsonPropertyDescription("sampleAnswers")
     private String sampleAnswers;
 
     public Survey(int id, String countryEUStatus, String countryCode, String questionCode, String subset, String answer, double answers, double subsetAnswers, double percentage, String sampleAnswers) {
