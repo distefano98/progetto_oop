@@ -33,33 +33,28 @@ Attraverso SpringBoot l'applicazione crea un server locale all'indirizzo http://
   
  **Operatori Logici**
 
-| Operatore | Descrizione |
-| --- | --- |
-| $or | Operatore logico "or" |
-| $and | Operatore logico "and" |
-| $in  |   |
-| $nin |  |
-| $not | operatore logico "not" |
+| Operatore | Descrizione |Esempio |
+| --- | --- | --- |
+| $or | Operatore logico "or" | {"$or": [ { "field" : "value"},{"field" : "value" } ] } |
+| $and | Operatore logico "and" |{"$and": [ {"field" : "value"},{"field" : "value"} ] } |
+| $in  | abbina elementi con una determinata caratteristia  | {"field" : { "$in" : [value]}} |
+| $nin |  abbina elementi che non hanno una determinata caratteristia |{"field" : { "$nin" : [value]}} |
+| $not | operatore logico "not" | {"field" : {"$not" : value}} |
 
 **Operatori Condizionali**
 
-| Operatore | Descrizione |
-| --- | --- |
-| $bt | >=value <= |
-| $eq | == |
-| $gt | > |
-| $gte | >= |
-| $lt | < |
-| $lte | <= |
+| Operatore | Descrizione | Esempio |
+| --- | --- | ---|
+| $bt | >=value <= | {"field" : {"$bt" : [value1, value2]}} |
+| $eq | == | {"field" : {"$eq" : value}} |
+| $gt | > | {"field" : {"$gt" : value}} |
+| $gte | >= | {"field" : {"$gte" : value}} |
+| $lt | < | {"field" : {"$lt" : value}} |
+| $lte | <= | {"field" : {"$lte" : value}} |
 
   
-## Inserimento di filtri nella richiesta POST
-|**body** | **descrizione**|
-|
   
-  
-  
-## Schema delle richieste
+## Schema delle richieste GET
 | **Link** | **Descrizione** |
 | --- | --- |
 | http://localhost:8080/metadata | Restituzione metadati |
@@ -67,7 +62,14 @@ Attraverso SpringBoot l'applicazione crea un server locale all'indirizzo http://
 | http://localhost:8080/stats/number | Restituzione statistiche di tipo numerico |
 | http://localhost:8080/stats/string?field=NOME_CAMPO&value=VALORE | Restituzione statistiche sulle stringhe <br/> specificando il nome del campo e il dato che si vuole studiare |
 
+## Inserimento di filtri nelle richieste di tipo POST
 
+L'inserimento di filtri viene effettuato mediante una richiesta di tipo POST.
+I filtri possono essere concatenati in qualsiasi modo per ottenere i dati che si vogliono estrapolare .
+
+Gli esempi di seguito riportati sono stati realizzati attraverso l'API Test Environment Postman 
+
+|**body**|**descrizione**|
 
 
 
