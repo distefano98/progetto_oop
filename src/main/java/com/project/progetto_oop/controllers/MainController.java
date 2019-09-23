@@ -8,9 +8,12 @@ import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
 import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
 import com.project.progetto_oop.ProgettoOopApplication;
 import com.project.progetto_oop.model.Survey;
+import com.project.progetto_oop.service.FilterService;
 import com.project.progetto_oop.utils.StatisticNumber;
 import com.project.progetto_oop.utils.StatisticString;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,11 +40,14 @@ public class MainController {
     }
 
     @RequestMapping(value = "/stats/number", method = RequestMethod.GET, produces = "application/json")
-    HashMap<String, StatisticNumber> showStatsNumber(){
+    HashMap<String, StatisticNumber> showStatsNumber(
+            @RequestParam String field
+    ){
         HashMap<String, StatisticNumber> hashMap = new HashMap<>();
-        hashMap.put("answers", new StatisticNumber(ProgettoOopApplication.startArrayList,"answers"));
-        hashMap.put("subsetAnswers", new StatisticNumber(ProgettoOopApplication.startArrayList,"subsetAnswers"));
-        hashMap.put("percentage", new StatisticNumber(ProgettoOopApplication.startArrayList,"percentage"));
+        hashMap.put(field, new StatisticNumber(ProgettoOopApplication.startArrayList,field));
+        if(hashMap.get(field).getSum() == 0){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Field not correct");
+        }
         return hashMap;
     }
 
@@ -52,11 +58,21 @@ public class MainController {
     ){
         HashMap<String, StatisticString> hashMap = new HashMap<>();
         StatisticString statisticString = new StatisticString(ProgettoOopApplication.startArrayList, value, field);
-        //if (statisticString.getUnique() == 0){
-            //Throwable new ResponseStatus()
-
         hashMap.put(field,statisticString);
+        if(hashMap.get(field).getUnique() == 0){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Field or value not correct");
+        }
         return hashMap;
+    }
+
+
+    @RequestMapping(value = "/filter", method = RequestMethod.POST, produces = "application/json")
+    public ArrayList<Survey> showFilteredData(
+            @RequestBody String filter
+    ){
+        ArrayList<Survey> filteredSurveys = null;
+        ArrayList<Survey> initSurveys = ProgettoOopApplication.startArrayList;
+        return FilterService.filterArrayList(filteredSurveys,initSurveys,filter);
     }
 
 }

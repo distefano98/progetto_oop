@@ -1,8 +1,8 @@
 package com.project.progetto_oop;
 
 import com.project.progetto_oop.model.Survey;
-import com.project.progetto_oop.utils.Download;
-import com.project.progetto_oop.utils.ParseDataset;
+import com.project.progetto_oop.service.Download;
+import com.project.progetto_oop.service.ParseDataset;
 import org.json.JSONException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
