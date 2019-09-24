@@ -9,9 +9,9 @@ import java.util.Collection;
 
 public class FilterUtils<T> {
 
-    public static Collection<Survey> filter(Collection<Survey> src, String fieldName, String operator, Object... value) {
+    public static Collection<Survey> filter(Collection<Survey> initCollection, String fieldName, String operator, Object... value) {
         Collection<Survey> collection = new ArrayList<>();
-        for(Survey item : src) {
+        for(Survey item : initCollection) {
             try {
                 Method m = null;
                 m = item.getClass().getMethod("get"+fieldName.substring(0, 1).toUpperCase()+fieldName.substring(1),null);

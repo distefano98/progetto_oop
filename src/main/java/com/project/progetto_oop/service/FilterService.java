@@ -18,7 +18,7 @@ public class FilterService {
             try {
                 JSONObject obj = new JSONObject(filter);
                 String operator = (String) obj.keys().next();
-                if ((filter.indexOf("$or") > 1) || (filter.indexOf("$and") > 1) || (filter.indexOf("or") + filter.indexOf("$and") >= 2)) {
+                if (filter.indexOf("or") + filter.indexOf("$and") >= 2) {
                     JSONArray jsonArray = obj.getJSONArray(operator);
                     ArrayList<ArrayList<Survey>> arrayListArrayList = new ArrayList<>();
                     for (int i = 0; i < jsonArray.length(); i++) {
