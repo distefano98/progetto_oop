@@ -87,9 +87,14 @@ Gli esempi di seguito riportati sono stati realizzati attraverso l'API Test Envi
 
 ### Diagramma delle classi 
 
+![CLASS_OBJECT](https://user-images.githubusercontent.com/55144535/65542937-72341f00-df10-11e9-8837-d2a4e65e80af.png)
+
 ### Diagramma dei casi d'uso
+
 ![USE_CASE](https://user-images.githubusercontent.com/55144535/65542196-000f0a80-df0f-11e9-906e-c72c30ee475e.jpeg)
 
 
 ### Diagramma delle sequenze
+
+![SEQUENCE_DIAGRAM](https://user-images.githubusercontent.com/55144535/65542875-5466ba00-df10-11e9-8fa9-36eb2cdb93f4.jpeg)
 
