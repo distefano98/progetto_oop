@@ -13,6 +13,13 @@ import java.util.ArrayList;
 
 public class FilterService {
 
+    /**
+     *Metodo che elabora l'arraylist iniziale filtrandolo tramite il campo field
+     * @param filteredSurveys arraylist filtrato di Survey
+     * @param initSurveys arraylist iniziale di Survey
+     * @param filter Json (preso come string) che rappresenta le istruzioni per filtrare
+     * @return filteredSurveys, arraylist di Survey filtrato, se non risulta vuoto, altrimenti initSurveys
+     */
     public static ArrayList<Survey> filterArrayList(ArrayList<Survey> filteredSurveys, ArrayList<Survey> initSurveys, String filter) {
         if (filter != null) {
             try {
@@ -50,6 +57,13 @@ public class FilterService {
         }
     }
 
+    /**
+     *Metodo che controlla il tipo di filtro (AND, OR)
+     * @param arrayList arraylist di Survey
+     * @param requestBody oggetto JSON che rappresenta le istruzioni per filtrare
+     * @return Restituisce l'insieme di oggetti filtrato ottenuto tramite unione(OR) o intersezione (AND)
+     * @throws JSONException dovuta alla conversione in JSON
+     */
     private static ArrayList<Survey> filterCheck(ArrayList<Survey> arrayList, JSONObject requestBody) throws JSONException {
         String field = (String) requestBody.keys().next();
         while (requestBody.keys().hasNext()) {
@@ -89,6 +103,15 @@ public class FilterService {
         return arrayList;
     }
 
+    /**
+     *Metodo che analizza il tipo di operatore
+     * @param arrayList arraylist di Survey
+     * @param json oggetto JSON
+     * @param op operatore che viene analizzato tramite lo switch
+     * @param field campo attraverso cui si effettua il filtro
+     * @return arraylist di Survey filtrato in base al tipo di operatore
+     * @throws JSONException dovuta alla conversione in JSON
+     */
     private static ArrayList<Survey> checkOperator(ArrayList<Survey> arrayList, JSONObject json, String op, String field)
             throws JSONException {
         switch (op) {

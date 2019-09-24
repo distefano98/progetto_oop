@@ -15,6 +15,12 @@ public class StatisticNumber {
     private double sum;
     private int count;
 
+
+    /**
+     * Metodo che consente di calcolare le statistiche per i campi di tipo numerici
+     * @param surveys arraylist di Survey
+     * @param field nome del campo sul quale calcolare le statistiche
+     */
     public StatisticNumber(ArrayList<Survey> surveys, String field) {
         this.count = surveys.size();
         double[] values = new double[count];

@@ -9,6 +9,14 @@ import java.util.Collection;
 
 public class FilterUtils<T> {
 
+    /**
+     *
+     * @param src gruppo di insiemi di oggetti Survey
+     * @param fieldName nome del campo
+     * @param operator tipo di operatore
+     * @param value valore su cui applicare il filtro
+     * @return restituisce l'insieme di oggetti
+     */
     public static Collection<Survey> filter(Collection<Survey> src, String fieldName, String operator, Object... value) {
         Collection<Survey> collection = new ArrayList<>();
         for(Survey item : src) {
@@ -26,6 +34,13 @@ public class FilterUtils<T> {
         return collection;
     }
 
+    /**
+     *
+     * @param value valore attraverso cui si effettua il filtro
+     * @param op tipo di operatore
+     * @param objects valore su cui applicare il filtro
+     * @return true o false perché è una funzione booleana
+     */
     private static boolean check(Object value, String op, Object... objects) {
 
         if (objects.length == 1 && objects[0] instanceof Number && value instanceof Number) {

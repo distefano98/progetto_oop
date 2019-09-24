@@ -40,6 +40,7 @@ public class Survey implements Serializable {
         this.sampleAnswers = sampleAnswers;
     }
 
+
     public int getId() {
         return id;
     }

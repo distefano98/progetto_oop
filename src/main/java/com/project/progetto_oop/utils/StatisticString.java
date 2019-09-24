@@ -13,6 +13,12 @@ public class StatisticString {
     private int unique;
     private float countPercent;
 
+    /**
+     * Metodo che consente di elabora le statistiche per i dati alfanumerici
+     * @param surveys arraylist di Survey
+     * @param value valore sul quale effettuare le statistiche
+     * @param field nome del campo sul quale effettuare le statistiche
+     */
     public StatisticString(ArrayList<Survey> surveys, String value, String field) {
         this.value = value;
         this.count = surveys.size();
