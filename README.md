@@ -74,8 +74,8 @@ Gli esempi di seguito riportati sono stati realizzati attraverso l'API Test Envi
 
 | **body** | **descrizione** |
 | --- | --- | 
-|{ "$and" : <br/> [ { "id" : { "$gte" : 10000 } } , { "percentage" : { "$gt" : 50 } }]} | restituzione degli elemtni che verificano la condizione di avere sia un *id* maggiore uguale di 10000 sia una *percentuale* superiore al 50%|
-|{ "$or" : </br> [ { "id" : { "$lt" : 10000 } } , { "answers" : { "$lt" : 20 } }] } | restituzione degli elemtni che verificano la condizione di avere o un *id* minore uguale di  10000 o un *answers* minore di 20 |
+|{ "$and" : <br/> [ { "id" : { "$gte" : 10000 } } , { "percentage" : { "$gt" : 50 } }]} | restituzione degli elementi che verificano la condizione di avere sia un *id* maggiore uguale di 10000 sia una *percentuale* superiore al 50%|
+|{ "$or" : </br> [ { "id" : { "$lt" : 10000 } } , { "answers" : { "$lt" : 20 } }] } | restituzione degli elementi che verificano la condizione di avere o un *id* minore uguale di  10000 o un *answers* minore di 20 |
 |{ "$and" : [</br> { "$or" : [ { "countryCode" : { "$in" : [AL]} },  { "countryCode" : { "$in" : [CH]} } ] }, </br>	{ "percentage" : { "$bt" : [30, 50]} }] }| OR logico tra elementi con countryCod di valore AL e CH prendendo, fra quest'ultimi ,  quelli con percentuale compresa tra 30 e 50|
 
 
