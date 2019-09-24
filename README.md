@@ -29,24 +29,54 @@ Attraverso SpringBoot l'applicazione crea un server locale all'indirizzo http://
   - somma 
   - deviazione standard
   - media 
-  - conteggio degli elementi <br/>
+  - conteggio degli elementi
+  <br/>
   
-  ## Inserimento di filtri nella richiesta GET
+ **Operatori Logici**
+
+| Operatore | Descrizione |Esempio |
+| --- | --- | --- |
+| $or | Operatore logico "or" | {"$or": [ { "field" : "value"},{"field" : "value" } ] } |
+| $and | Operatore logico "and" |{"$and": [ {"field" : "value"},{"field" : "value"} ] } |
+| $in  | abbina elementi con una determinata caratteristia  | {"field" : { "$in" : [value]}} |
+| $nin |  abbina elementi che non hanno una determinata caratteristia |{"field" : { "$nin" : [value]}} |
+| $not | operatore logico "not" | {"field" : {"$not" : value}} |
+
+**Operatori Condizionali**
+
+| Operatore | Descrizione | Esempio |
+| --- | --- | ---|
+| $bt | >=value <= | {"field" : {"$bt" : [value1, value2]}} |
+| $eq | == | {"field" : {"$eq" : value}} |
+| $gt | > | {"field" : {"$gt" : value}} |
+| $gte | >= | {"field" : {"$gte" : value}} |
+| $lt | < | {"field" : {"$lt" : value}} |
+| $lte | <= | {"field" : {"$lte" : value}} |
+
   
-  ....
   
-  
-  ## Schema delle richieste
+## Schema delle richieste GET
 | **Link** | **Descrizione** |
 | --- | --- |
 | http://localhost:8080/metadata | Restituzione metadati |
 | http://localhost:8080/ | Restituzione dati |
-| http://localhost:8080/stats/number | Restituzione statistiche di tipo numerico |
+| http://localhost:8080/stats/number?field=NOME_CAMPO | Restituzione statistiche di tipo numerico specificando il nome del campo sul quale effettuarle|
 | http://localhost:8080/stats/string?field=NOME_CAMPO&value=VALORE | Restituzione statistiche sulle stringhe <br/> specificando il nome del campo e il dato che si vuole studiare |
 
+## Inserimento di filtri nelle richieste di tipo POST
 
-(...filtri)
+L'inserimento di filtri viene effettuato mediante una richiesta di tipo POST.
+E' possibile inserire filtri su massimo due campi del dataset (legati da un operatore logico) indicando su di essi l'operatore condizionale e il valore/i di filtraggio ; è possibile concatenare operatori logici in modo da ottenere fino ad un massimo di due livelli di filtraggio.
 
+Gli esempi di seguito riportati sono stati realizzati attraverso l'API Test Environment Postman </br>
+***localhost:8080/filter***
+
+
+| **body** | **descrizione** |
+| --- | --- | 
+|{ "$and" : <br/> [ { "id" : { "$gte" : 10000 } } , { "percentage" : { "$gt" : 50 } }]} | restituzione degli elementi che verificano la condizione di avere sia un *id* maggiore uguale di 10000 sia una *percentuale* superiore al 50%|
+|{ "$or" : </br> [ { "id" : { "$lt" : 10000 } } , { "answers" : { "$lt" : 20 } }] } | restituzione degli elementi che verificano la condizione di avere o un *id* minore uguale di  10000 o un *answers* minore di 20 |
+|{ "$and" : [</br> { "$or" : [ { "countryCode" : { "$in" : [AL]} },  { "countryCode" : { "$in" : [CH]} } ] }, </br>	{ "percentage" : { "$bt" : [30, 50]} }] }| OR logico tra elementi con countryCod di valore AL e CH prendendo, fra quest'ultimi ,  quelli con percentuale compresa tra 30 e 50|
 
 
 
@@ -60,28 +90,4 @@ Attraverso SpringBoot l'applicazione crea un server locale all'indirizzo http://
 ### Diagramma dei casi d'uso
 
 ### Diagramma delle sequenze
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
