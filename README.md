@@ -88,6 +88,8 @@ Gli esempi di seguito riportati sono stati realizzati attraverso l'API Test Envi
 ### Diagramma delle classi 
 
 ### Diagramma dei casi d'uso
+![USE_CASE](https://user-images.githubusercontent.com/55144535/65542196-000f0a80-df0f-11e9-906e-c72c30ee475e.jpeg)
+
 
 ### Diagramma delle sequenze
 
